@@ -1,0 +1,22 @@
+{% extends "html/base.html" %}
+
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+
+{% block title %}form{% endblock title %}
+
+{% block header %}
+{% include "html/layouts/navbar.html" %}
+<h1 class="my-5 py-5 text-center">form</h1>
+{% endblock header %}
+
+{% block main %}
+{% bootstrap_messages %}
+{% include "html/components/form.html" %}
+{% endblock main %}
+
+{% block footer %}
+{% include "html/layouts/footer.html" %}
+{% endblock footer %}
+
+{% bootstrap_javascript %}

@@ -1,0 +1,21 @@
+{% extends "html/base.html" %}
+
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+
+{% block title %}Agenda{% endblock title %}
+
+{% block header %}
+{% include "html/layouts/navbar.html" %}
+<h1 class="my-5 py-5 text-center">Agenda</h1>
+{% endblock header %}
+
+{% block main %}
+{% include "html/components/table.html" %}
+{% endblock main %}
+
+{% block footer %}
+{% include "html/layouts/footer.html" %}
+{% endblock footer %}
+
+{% bootstrap_javascript %}

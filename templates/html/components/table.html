@@ -1,0 +1,53 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+
+<div class="col-6 mx-auto">
+{% bootstrap_messages %}
+<div class="table-responsive small">
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Fecha</th>
+        <th scope="col">Hora</th>
+        <th scope="col">Paciente</th>
+        <th scope="col">Especialista</th>
+        <th scope="col">Motivo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for appointment in appointment_list %}
+      <tr>
+        <td>{{ appointment.date }}</td>
+        <td>{{ appointment.time.availability }}</td>
+        <td>{{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</td>
+        <td>{{ appointment.provider.first_name }} {{ appointment.provider.last_name }}</td>
+        <td>{{ appointment.reason }}</td>
+      </tr>
+      <tr>
+        <td><a href="{% url "schedule:appointment_update" appointment.pk %}">Reagendar hora</a></td>
+        <td><a href="{% url "schedule:patient_update" appointment.patient.pk %}">Modificar paciente</a></td>
+        <td><a href="{% url "schedule:provider_update" appointment.provider.pk %}">Modificar especialista</a></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a href="{% url "schedule:appointment_delete" appointment.pk %}">Anular hora</a></td>
+        <td><a href="{% url "schedule:patient_delete" appointment.patient.pk %}">Eliminar paciente</a></td>
+        <td><a href="{% url "schedule:provider_delete" appointment.provider.pk %}">Eliminar especialista</a></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="5"></td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5">none</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+
+{% bootstrap_javascript %}

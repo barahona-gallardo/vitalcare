@@ -1,0 +1,50 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+
+<div class="container col-6">
+        <form method="POST">
+            {% csrf_token %}
+
+        {% if request.resolver_match.view_name != "schedule:provider_delete" and request.resolver_match.view_name != "schedule:patient_delete" and request.resolver_match.view_name != "schedule:appointment_delete" %}
+            {% bootstrap_form form %}
+        {% endif %}
+
+        {% if request.resolver_match.view_name == "accounts:register" %}
+            {% bootstrap_button "Registrarse" button_type="submit" button_class="btn-secondary" %}
+
+        {% elif request.resolver_match.view_name == "accounts:login" %}
+            {% bootstrap_button "Iniciar sesión" button_type="submit" button_class="btn-secondary" %}
+
+        {% elif request.resolver_match.view_name == "schedule:provider_create" %}
+            {% bootstrap_button "Publicar" button_type="submit" button_class="btn-success" %}
+
+        {% elif request.resolver_match.view_name == "schedule:provider_update" %}
+            {% bootstrap_button "Editar" button_type="submit" button_class="btn-warning" %}
+
+        {% elif request.resolver_match.view_name == "schedule:provider_delete" %}
+            {% bootstrap_button "Eliminar" button_type="submit" button_class="btn-danger" %}
+
+        {% elif request.resolver_match.view_name == "schedule:patient_create" %}
+            {% bootstrap_button "Publicar" button_type="submit" button_class="btn-success" %}
+
+        {% elif request.resolver_match.view_name == "schedule:patient_update" %}
+            {% bootstrap_button "Editar" button_type="submit" button_class="btn-warning" %}
+
+        {% elif request.resolver_match.view_name == "schedule:patient_delete" %}
+            {% bootstrap_button "Eliminar" button_type="submit" button_class="btn-danger" %}
+
+        {% elif request.resolver_match.view_name == "schedule:appointment_create" %}
+            {% bootstrap_button "Publicar" button_type="submit" button_class="btn-success" %}
+
+        {% elif request.resolver_match.view_name == "schedule:appointment_update" %}
+            {% bootstrap_button "Editar" button_type="submit" button_class="btn-warning" %}
+
+        {% elif request.resolver_match.view_name == "schedule:appointment_delete" %}
+            {% bootstrap_button "Eliminar" button_type="submit" button_class="btn-danger" %}
+
+        {% endif %}
+
+    </form>
+</div>
+
+{% bootstrap_javascript %}
